@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>proxy</title>
+</head>
+
+<body>
+    <div>
+        <a href="/ejercicios/">Volver al indice</a>
+        <p><em>Abre la consola</em></p>
+
+     
+    </div>
+
+    <script src="https://unpkg.com/fast-levenshtein@2.0.6/levenshtein.js"></script>
+    <script>
+
+        const target = {
+            red: 'rojo',
+            green: 'verde',
+            azul: 'Azul'
+        }
+
+        const handler = {
+            get(obj, prop){
+                if (prop in obj) {
+                    return obj[prop]
+                } 
+
+                const sujerencia = Object.keys(obj).find(key => {
+                    return Levenshtein.get(key, prop) <= 3 
+                })
+
+                if (sujerencia) {
+                    console.log('el prop que estabas buscando no se encontro. Quisiste decir', sujerencia);
+                }
+                return obj[prop];
+            },
+        };
+
+        const p = new Proxy(target, handler);
+        
+    </script>
+</body>
+
+</html>

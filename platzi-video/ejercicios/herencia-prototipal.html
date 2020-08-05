@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>herencia ptototipal</title>
+</head>
+
+<body>
+    <div>
+        <a href="/ejercicios/">Volver al indice</a>
+        <p><em>Abre la consola</em></p>
+
+        <!-- <ul>
+            <li> <button class="call-to-action"> Aprender</button></li>
+            <li> <button class="call-to-action"> Aprender más</button></li>
+            <li> <button class="call-to-action"> Nunca pares de aprender</button></li>
+        </ul> -->
+    </div>
+
+    <script>
+        function Hero(name) {
+            this.name = name;
+        }
+
+        Hero.prototype.saludar = function () {
+            console.log(`New:  ${this.name}`);
+        }
+
+        const ironman = new Hero('Ironman');
+        // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        //  para probar hay que hacerlo de manera individual
+        // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+        // =========================================================================
+        // Propiedades de la instancia
+        // =========================================================================
+        console.log('name: ', ironman.name);
+    
+        // =========================================================================
+        // Propiedades de la "clase"
+        // =========================================================================
+        console.log('saludar: ', ironman.saludar);
+        ironman.saludar();
+        // =========================================================================
+        // Propiedades heredadas ej: toString
+        // =========================================================================
+        console.log('tostring: ', ironman.toString);
+        ironman.toString();
+        // =========================================================================
+        // hasOwnProperty (de donde sale toString o esto ?)
+        // =========================================================================
+        console.log('ironman.hasOwnProperty(name): ', ironman.hasOwnProperty('name'));
+        console.log('ironman.hasOwnProperty(saludar) ', ironman.hasOwnProperty('saludar'));
+    </script>
+</body>
+
+</html>

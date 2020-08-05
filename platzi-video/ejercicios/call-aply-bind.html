@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>call aply y bind</title>
+</head>
+
+<body>
+    <div>
+        <a href="/ejercicios/">Volver al indice</a>
+        <p><em>Abre la consola</em></p>
+
+        <ul>
+            <li> <button class="call-to-action"> Aprender</button></li>
+            <li> <button class="call-to-action"> Aprender más</button></li>
+            <li> <button class="call-to-action"> Nunca pares de aprender</button></li>
+        </ul>
+    </div>
+
+    <script>
+        function saludar() {
+            console.log(`Hola soy ${this.name} y mi apellido es ${this.apellido}`);
+        }
+
+        const person = {
+            name: 'adri',
+            apellido: 'tejedor'
+        }
+
+        function caminar(mts, dir) {
+            console.log(`${this.name} camina ${mts} metros hacia ${dir}`);
+        }
+        // ==============================================================
+        // establece this usando "call"
+        // ==============================================================
+        saludar.call(person);
+        // ==============================================================
+        // establece this usando "call" pasando argumentos a la funcion
+        // ==============================================================
+        caminar.call(person, 50, 'casa')
+        // ==============================================================
+        // establece this usando "aply"
+        // ==============================================================
+        saludar.apply(person)
+        // ==============================================================
+        // establece this usando "aply" pasando argumentos a la funcion
+        // ==============================================================
+        caminar.apply(person, [1000, 'trabajo'])
+        // ==============================================================
+        // establecer this en una nueva funcion usando "bind"
+        // ==============================================================
+        const person2 = {
+            name: 'daniel',
+            apellido: 'perez'
+        }
+        const saludo = saludar.bind(person2);
+        saludo();
+
+        const caminata = caminar.bind(person2)
+        caminata( 300, 'carniceria')
+        // ==============================================================
+        // Cuando es util usar uno de estos metodos
+        // ==============================================================
+
+        const buttons = document.getElementsByClassName('call-to-action');
+        Array.prototype.forEach.call(buttons, button => {
+            button.onclick = () => {
+                alert('nunca pares de aprender')
+            }
+        });
+    </script>
+</body>
+
+</html>

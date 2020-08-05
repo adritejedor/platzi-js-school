@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>scope</title>
+</head>
+
+<body>
+    <div>
+        <a href="/ejercicios/">Volver al indice</a>
+        <p><em>Abre la consola</em></p>
+    </div>
+
+    <script>
+        // ==============
+        // scope global
+        // ==============
+        
+        var global = 'hola mundo'
+        
+        // ==============
+        // function scope
+        // ==============
+        
+        function printNumber() {
+            for (var i = 0; i < 10; i++) {
+                function eventuallyPrintNumber(n) {
+                    setTimeout(() => {
+                        console.log(n);
+                    }, 100);
+                }
+                eventuallyPrintNumber(i);
+            }
+        }
+        
+        printNumber();
+        
+        // ==============
+        // blok scope
+        // ==============
+        
+        function printNumber2() {
+            for (let i = 0; i < 10; i++) {
+                setTimeout(() => {
+                    console.log(i);
+                }, 100);
+            }
+        }
+        
+        printNumber2();
+        
+        // ==============
+        // module scope
+        // ==============
+
+        // el escope de una variable se limita al archivo en el que esta definido
+    </script>
+</body>
+
+</html>
