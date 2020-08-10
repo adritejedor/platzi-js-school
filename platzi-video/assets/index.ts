@@ -1,15 +1,16 @@
-import MediaPlayer from './MediaPlayer.js';
-import AutoPlay from './plugins/AutoPlay.js';
-import AutoPause from './plugins/AutoPause.js';
+import 'regenerator-runtime/runtime'
+import MediaPlayer from './MediaPlayer';
+import AutoPlay from './plugins/AutoPlay';
+import AutoPause from './plugins/AutoPause';
 
 const video = document.querySelector('video');
 const player = new MediaPlayer({ el: video, plugins: [
     new AutoPlay(),
     new AutoPause()
 ] });
-const playButton = document.getElementById('play-button');
+const playButton: HTMLElement = document.getElementById('play-button');
 playButton.onclick = () => player.togglePlay();
-const muteButton = document.getElementById('mute-button');
+const muteButton: HTMLElement = document.getElementById('mute-button');
 muteButton.onclick = () => player.toggleMute();
 
 if ('serviceWorker' in navigator) {

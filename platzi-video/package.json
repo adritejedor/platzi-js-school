@@ -12,7 +12,8 @@
     "parcel-bundler": "^1.12.4",
     "typescript": "^3.9.7"
   },
-  "browserlist": [
-    "las 1 Chrome version"
-  ]
+  "browserslist": [
+    "last 3 Chrome version"
+  ],
+  "dependencies": {}
 }
